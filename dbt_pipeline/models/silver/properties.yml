@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: silver_orders
+    description: "Cleaned and deduplicated orders"
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+          
+
+  - name: silver_payments
+    description: "Cleaned and deduplicated payments"
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+
+  - name: silver_customers
+    description: "Unique customer dimension"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: email
+        tests:
+          - not_null
+
+  - name: silver_products
+    description: "Unique product dimension"
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+  - name: silver_categories
+    description: "Unique category dimension"
+    columns:
+      - name: category_id
+        tests:
+          - unique
+          - not_null
