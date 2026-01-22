@@ -3,8 +3,8 @@ version: 2
 sources:
   - name: landing_zone
     description: "Raw CSVs landing in Databricks Volumes"
-    database: main
-    schema: volume
+    database: dbt_test1
+    schema: bronze
     loader: read_files
     tables:
       # Dimensions (Full Load)
