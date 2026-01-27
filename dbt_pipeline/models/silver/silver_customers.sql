@@ -1,6 +1,5 @@
 {{ config(
     materialized='table',
-    catalog = 'delta',
     schema='silver'
 ) }}
 
