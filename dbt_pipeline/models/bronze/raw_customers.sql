@@ -1,4 +1,4 @@
-{{ config(materialized='table', schema='bronze') }}
+{{ config(materialized='table', catalog = 'main',schema='dbt_bronze') }}
 
 -- {{ source('landing_zone', 'customers') }}
 

@@ -11,3 +11,4 @@ FROM STREAM read_files(
     format => 'csv', 
     header => true
 )
+where amount > {{var("amount",0)}}
