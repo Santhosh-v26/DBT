@@ -1,4 +1,13 @@
-{{ config(materialized='table',schema='dbt_bronze') }}
+{{ config(
+  materialized = 'table',
+  schema="dbt_bronze",
+  tblproperties = {
+    'delta.autoOptimize.optimizeWrite': 'true',  
+    'delta.autoOptimize.autoCompact': 'true',    
+    'delta.enableChangeDataFeed': 'true',        
+    'delta.columnMapping.mode': 'name'          
+  }
+) }}
 
 -- {{ source('landing_zone', 'customers') }}
 

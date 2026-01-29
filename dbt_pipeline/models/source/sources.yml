@@ -7,11 +7,11 @@ sources:
     schema: bronze
     loader: read_files
     tables:
-      # Dimensions (Full Load)
       - name: customers
-      - name: products
-      - name: categories
-      
-      # Facts (Incremental/Streaming)
       - name: orders
-      - name: payments
+
+  - name: source
+    database: dbt_test1
+    schema: default
+    tables:
+      - name: test_json
