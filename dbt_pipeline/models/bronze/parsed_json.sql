@@ -28,16 +28,16 @@ WITH parsed_json AS (
 )
 
 SELECT
-    parsed.order_id              AS order_id,
-    parsed.customer.id           AS customer_id,
-    parsed.customer.name         AS customer_name,
-    parsed.customer.city         AS customer_city,
+    parsed.order_id,
+    parsed.customer.id AS customer_id,
+    parsed.customer.name AS customer_name,
+    parsed.customer.city AS customer_city,
     parsed.amount,
     parsed.payment_method,
     parsed.order_date,
-    exploded.product             AS product,
-    exploded.qty                 AS qty,
-    exploded.price               AS price,
+    exploded.product,
+    exploded.qty,
+    exploded.price,
     exploded.qty * exploded.price AS item_total
 FROM parsed_json
-LATERAL VIEW explode(parsed.items) AS exploded;
+    LATERAL VIEW explode(parsed.items) as exploded;

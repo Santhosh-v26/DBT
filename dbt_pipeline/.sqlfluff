@@ -1,0 +1,33 @@
+[sqlfluff]
+# Use the dbt templater to handle {{ ref() }} and macros
+templater = dbt
+# Set the SQL dialect to Databricks
+dialect = databricks
+# Ensure errors are reported but don't stop the process unless configured in CI
+verbosity = 1
+
+[sqlfluff:templater:dbt]
+# Point to your current directory for the project and profile
+project_dir = .
+profiles_dir = ~/.dbt
+# This MUST match the 'profile:' name in your dbt_project.yml
+profile = dbt_pipeline
+
+[sqlfluff:indentation]
+# Standardize on 4 spaces for indentation
+tab_size = 4
+indent_unit = space
+# If you prefer commas at the start of the line, use 'leading'
+comma_style = leading
+
+[sqlfluff:rules:capitalisation.keywords]
+# Force all SQL keywords (SELECT, FROM, etc.) to be uppercase
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.identifiers]
+# Force column and table names to be lowercase for consistency
+capitalisation_policy = lower
+
+[sqlfluff:rules:aliasing.column]
+# Force the use of 'AS' when aliasing columns
+aliasing_specification = explicit
